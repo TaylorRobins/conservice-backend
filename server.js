@@ -172,17 +172,17 @@ app.put("/api/employees/:id", async (request, response) => {
         return;
     }
 
-    if (body.startDate && isNaN(Number(body.startDate))) {
+    if (body.start && isNaN(Number(body.startDate))) {
         response.status(400).send("The start date parameter must be of type number.");
         return;
     }
 
-    if (body.endDate && isNaN(Number(body.endDate))) {
+    if (body.end && isNaN(Number(body.endDate))) {
         response.status(400).send("The end date parameter must be of type number.");
         return;
     }
 
-    if (body.employmentStatus && typeof body.employmentStatus !== "string") {
+    if (body.status && typeof body.employmentStatus !== "string") {
         response.status(400).send("The employment status parameter must be of type string.");
         return;
     }
@@ -202,7 +202,7 @@ app.put("/api/employees/:id", async (request, response) => {
         return;
     }
 
-    if (body.favoriteColor && typeof body.favoriteColor !== "string") {
+    if (body.color && typeof body.favoriteColor !== "string") {
         response.status(400).send("The favorite color parameter must be of type string.");
         return;
     }

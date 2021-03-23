@@ -115,15 +115,15 @@ const updateOne = function(query, newEmployee) {
     }
 
     if (newEmployee.start) {
-        newEmployeeQuery.startDate = newEmployee.startDate;
+        newEmployeeQuery.startDate = newEmployee.start;
     }
 
     if (newEmployee.end) {
-        newEmployeeQuery.endDate = newEmployee.endDate;
+        newEmployeeQuery.endDate = newEmployee.end;
     }
 
     if (newEmployee.status) {
-        newEmployeeQuery.employmentStatus = newEmployee.employmentStatus;
+        newEmployeeQuery.employmentStatus = newEmployee.status;
     }
 
     if (newEmployee.shift) {
@@ -139,7 +139,7 @@ const updateOne = function(query, newEmployee) {
     }
 
     if (newEmployee.color) {
-        newEmployeeQuery.favoriteColor = newEmployee.favoriteColor;
+        newEmployeeQuery.favoriteColor = newEmployee.color;
     }
 
     return new Promise((resolve, reject) => {
