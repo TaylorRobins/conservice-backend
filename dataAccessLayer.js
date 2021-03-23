@@ -114,16 +114,16 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.department = newEmployee.department;
     }
 
-    if (newEmployee.startDate) {
-        newEmployeeQuery.startDate = newEmployee.startDate;
+    if (newEmployee.start) {
+        newEmployeeQuery.start = newEmployee.start;
     }
 
-    if (newEmployee.endDate) {
-        newEmployeeQuery.endDate = newEmployee.endDate;
+    if (newEmployee.end) {
+        newEmployeeQuery.end = newEmployee.end;
     }
 
-    if (newEmployee.employmentStatus) {
-        newEmployeeQuery.employmentStatus = newEmployee.employmentStatus;
+    if (newEmployee.status) {
+        newEmployeeQuery.status = newEmployee.status;
     }
 
     if (newEmployee.shift) {
@@ -134,8 +134,8 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.manager = newEmployee.manager;
     }
 
-    if (newEmployee.favoriteColor) {
-        newEmployeeQuery.favoriteColor = newEmployee.favoriteColor;
+    if (newEmployee.color) {
+        newEmployeeQuery.color = newEmployee.color;
     }
 
     return new Promise((resolve, reject) => {
