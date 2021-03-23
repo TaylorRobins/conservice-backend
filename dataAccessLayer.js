@@ -134,10 +134,6 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.manager = newEmployee.manager;
     }
 
-    if (newEmployee.teamMemberPhoto) {
-        newEmployeeQuery.teamMemberPhoto = newEmployee.teamMemberPhoto;
-    }
-
     if (newEmployee.favoriteColor) {
         newEmployeeQuery.favoriteColor = newEmployee.favoriteColor;
     }
