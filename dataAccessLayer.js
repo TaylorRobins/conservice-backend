@@ -87,7 +87,7 @@ const findOne = function(query) {
     });
 };
 //UPDATE ONE DOCUMENT
-const updateOne = function(query, newEmployee) {
+const updateOne = function (query, newEmployee) {
     const newEmployeeQuery = {};
 
     if (newEmployee.name) {
@@ -138,10 +138,12 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.color = newEmployee.color;
     }
 
+    console.log(query);
+
     return new Promise((resolve, reject) => {
         employeeCollection.updateOne(
             query, 
-            {$set: newEmployeeQuery}, 
+            { $set: newEmployeeQuery}, 
             (error, result) => {
                 if (error) {
                     console.log(error);
