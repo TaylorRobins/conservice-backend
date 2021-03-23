@@ -172,13 +172,13 @@ app.put("/api/employees/:id", async (request, response) => {
         return;
     }
 
-    if (body.start && isNaN(Number(body.start))) {
-        response.status(400).send("The start date parameter must be of type number.");
+    if (body.start && typeof body.start !== "string") {
+        response.status(400).send("The start date parameter must be of type string.");
         return;
     }
 
-    if (body.end && isNaN(Number(body.end))) {
-        response.status(400).send("The end date parameter must be of type number.");
+    if (body.end && typeof body.end !== "string") {
+        response.status(400).send("The end date parameter must be of type string.");
         return;
     }
 
