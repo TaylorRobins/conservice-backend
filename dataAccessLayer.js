@@ -114,15 +114,15 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.department = newEmployee.department;
     }
 
-    if (newEmployee.startDate) {
+    if (newEmployee.start) {
         newEmployeeQuery.startDate = newEmployee.startDate;
     }
 
-    if (newEmployee.endDate) {
+    if (newEmployee.end) {
         newEmployeeQuery.endDate = newEmployee.endDate;
     }
 
-    if (newEmployee.employmentStatus) {
+    if (newEmployee.status) {
         newEmployeeQuery.employmentStatus = newEmployee.employmentStatus;
     }
 
@@ -138,7 +138,7 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.teamMemberPhoto = newEmployee.teamMemberPhoto;
     }
 
-    if (newEmployee.favoriteColor) {
+    if (newEmployee.color) {
         newEmployeeQuery.favoriteColor = newEmployee.favoriteColor;
     }
 
