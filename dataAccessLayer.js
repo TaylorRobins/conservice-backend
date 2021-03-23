@@ -42,6 +42,7 @@ const insertOne = function(employee) {
                 reject(error);
             }
             console.log("SUCCESSFULLY INSERTED A NEW DOCUMENT")
+            resolve();
         });
     });
 };
@@ -177,6 +178,7 @@ const deleteOne = function(query) {
                 return;
             }
             console.log("SUCCESSFULLY DELETED DOCUMENT");
+            resolve();
         });
     });
 };

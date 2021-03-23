@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 
+const fs = require("fs");
+
 const dataAccessLayer = require("./dataAccessLayer");
 const {request} = require("http");
 const {response} = require("express");
@@ -17,7 +19,9 @@ app.use(bodyParser.json());
 let employees = [];
 
 try {
-    employees = JSON.parse(fs.readFileSync("employees.json")).employees;
+    const temp = fs.readFileSync("employees.json");
+    const parsed = JSON.parse(temp)
+    employees = parsed.employees
 } catch (error) {
     console.log("NO EXISTING FILE");
 }
@@ -50,9 +54,10 @@ app.get("/api/employees", async (request, response) => {
 });
 
 app.post("/api/employees", async (request, response) => {
+    console.log("Posted to /api/employees");
     const body = request.body;
 
-    if (!body.name || !body.address || !body.email || !body.phone || !body.position || !body.department || !body.startDate || !body.endDate || !body.employmentStatus || !body.shift || !body.manager || !body.teamMemberPhoto || !body.favoriteColor) {
+    if (!body.name || !body.address || !body.email || !body.phone || !body.position || !body.department || !body.start || !body.status || !body.shift || !body.manager || !body.color) {
         response
             .status(400)
             .send("Bad Request. Validation Error. Missing name, address, email, phone number, position, department, start date, end date, employment status, shift, manager, team member photo, or favorite color.");
@@ -89,17 +94,19 @@ app.post("/api/employees", async (request, response) => {
         return;
     }
 
-    if(typeof body.startDate !== "number") {
-        response.status(400).send("The start date parameter must be of type number")
+    // Should validate other date constraints. Format: 2021-03-22
+    if(typeof body.start !== "string") {
+        response.status(400).send("The start date parameter must be of type string")
         return;
     }
 
-    if(typeof body.endDate !== "number") {
-        response.status(400).send("The end date parameter must be of type number")
+    // Should validate other date constraints. Format: 2021-03-22
+    if(typeof body.end !== "string") {
+        response.status(400).send("The end date parameter must be of type string")
         return;
     }
 
-    if(typeof body.employmentStatus !== "string") {
+    if(typeof body.status !== "string") {
         response.status(400).send("The employment status parameter must be of type string")
         return;
     }
@@ -114,20 +121,17 @@ app.post("/api/employees", async (request, response) => {
         return;
     }
 
-    if(typeof body.teamMemberPhoto !== "string") {
-        response.status(400).send("The team member photo parameter must be of type string")
-        return;
-    }
-
-    if(typeof body.favoriteColor !== "string") {
+    if(typeof body.color !== "string") {
         response.status(400).send("The favorite color parameter must be of type string")
         return;
     }
+    const accessLayer = dataAccessLayer;
 
     await dataAccessLayer.insertOne(body);
 
     response.status(201).send();
 });
+
 
 app.put("/api/employees/:id", async (request, response) => {
     const employeeId = request.params.id;
