@@ -114,16 +114,16 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.department = newEmployee.department;
     }
 
-    if (newEmployee.start) {
-        newEmployeeQuery.startDate = newEmployee.start;
+    if (newEmployee.startDate) {
+        newEmployeeQuery.startDate = newEmployee.startDate;
     }
 
-    if (newEmployee.end) {
-        newEmployeeQuery.endDate = newEmployee.end;
+    if (newEmployee.endDate) {
+        newEmployeeQuery.endDate = newEmployee.endDate;
     }
 
-    if (newEmployee.status) {
-        newEmployeeQuery.employmentStatus = newEmployee.status;
+    if (newEmployee.employmentStatus) {
+        newEmployeeQuery.employmentStatus = newEmployee.employmentStatus;
     }
 
     if (newEmployee.shift) {
@@ -138,8 +138,8 @@ const updateOne = function(query, newEmployee) {
         newEmployeeQuery.teamMemberPhoto = newEmployee.teamMemberPhoto;
     }
 
-    if (newEmployee.color) {
-        newEmployeeQuery.favoriteColor = newEmployee.color;
+    if (newEmployee.favoriteColor) {
+        newEmployeeQuery.favoriteColor = newEmployee.favoriteColor;
     }
 
     return new Promise((resolve, reject) => {
