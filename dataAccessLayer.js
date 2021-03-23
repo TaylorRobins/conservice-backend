@@ -87,6 +87,7 @@ const findOne = function(query) {
     });
 };
 //UPDATE ONE DOCUMENT
+
 const updateOne = function (query, newEmployee) {
     const newEmployeeQuery = {};
 
@@ -141,8 +142,7 @@ const updateOne = function (query, newEmployee) {
     console.log(query);
 
     return new Promise((resolve, reject) => {
-        employeeCollection.updateOne(
-            query, 
+        employeeCollection.updateOne(query, 
             { $set: newEmployeeQuery}, 
             (error, result) => {
                 if (error) {
